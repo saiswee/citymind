@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-head: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-ink: #0E1B2C;
+  --color-ink-soft: #46566B;
+  --color-paper: #FAFBFC;
+  --color-paper-dim: #EEF1F5;
+  --color-line: #D8DEE6;
+  --color-line-strong: #B7C0CC;
+
+  /* Institutional blue — primary */
+  --color-teal: #1B3A6B;
+  --color-teal-deep: #122745;
+  --color-teal-tint: #E6EBF3;
+
+  --color-amber: #92660B;
+  --color-amber-tint: #F6EFDD;
+  --color-clay: #9A3A2E;
+  --color-clay-tint: #F5E5E2;
+  --color-moss: #2E6B44;
+  --color-moss-tint: #E3EEE6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-teal-tint); color: var(--color-teal-deep); }
+
+.font-head { font-family: var(--font-head); font-weight: 600; letter-spacing: -0.01em; }
+.font-mono { font-family: var(--font-mono); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-line-strong); border-radius: 999px; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.35s ease-out both; }
+
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--color-paper-dim) !important;
+}
+
+.blueprint-grid {
+  background-color: var(--color-ink);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.blueprint-grid-light {
+  background-image:
+    linear-gradient(rgba(14,27,44,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,27,44,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.sheet-frame { position: relative; }
+.sheet-frame::before,
+.sheet-frame::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-teal);
+}
+.sheet-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.sheet-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }

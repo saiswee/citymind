@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Rewrite /api/* → /.netlify/functions/* so the client can call /api/ai
+# without knowing the internal Netlify functions path.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# SPA fallback — send all unmatched routes to index.html for React Router.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
